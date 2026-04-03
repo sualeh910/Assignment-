@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class BinaryPartC {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        String binaryString = getBinaryString(number);
+        System.out.println("Binary digits as string: " + binaryString);
+
+        scanner.close();
+    }
+
+    // Function that returns a String containing binary digits
+    public static String getBinaryString(int num) {
+        if (num == 0) {
+            return "0";
+        }
+
+        String result = "";
+        int n = num;
+        while (n > 0) {
+            int remainder = n % 2;
+            result = remainder + result;  
+            n = n / 2;
+        }
+        return result;
+    }
+}
