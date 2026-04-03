@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class BinaryPartB {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        int[] binaryArray = getBinaryArray(number);
+
+        System.out.print("Binary digits as array: ");
+        for (int i = 0; i < binaryArray.length; i++) {
+            System.out.print(binaryArray[i]);
+        }
+        System.out.println();
+
+        scanner.close();
+    }
+
+    // Function that returns an int[] containing binary digits
+    public static int[] getBinaryArray(int num) {
+        if (num == 0) {
+            int[] zero = {0};
+            return zero;
+        }
+
+        // First count how many bits are needed
+        int count = 0;
+        int temp = num;
+        while (temp > 0) {
+            count++;
+            temp = temp / 2;
+        }
+
+        // Create array of that size
+        int[] bits = new int[count];
+
+        
+        int index = count - 1;
+        int n = num;
+        while (n > 0) {
+            int remainder = n % 2;
+            bits[index] = remainder;
+            index--;
+            n = n / 2;
+        }
+
+        return bits;
+    }
+}
