@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class BinaryPartA {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        // Convert to binary manually
+        String binary = "";
+        if (number == 0) {
+            binary = "0";
+        } else {
+            int temp = number;
+            while (temp > 0) {
+                int remainder = temp % 2;
+                binary = remainder + binary;   // prepend
+                temp = temp / 2;
+            }
+        }
+
+        System.out.println("Binary representation: " + binary);
+        scanner.close();
+    }
+}
